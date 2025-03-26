@@ -24,7 +24,7 @@ const FilesTab = ({ personnelId }) => {
   useEffect(() => {
     // İlk yüklemede dosyaları ve içerik türlerini getir
     refreshUploadedFiles();  // Dosyaları getir
-    axios.get('http://localhost:5001/api/content-types')
+    axios.get('http://localhost:5001/api/contents')
       .then(response => {
         setContentTypes(response.data);
       })

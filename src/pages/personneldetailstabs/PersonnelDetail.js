@@ -4,58 +4,48 @@ import axios from 'axios';
 import ProfileTab from './ProfileTab';
 import CareerTab from './CareerTab';
 import FilesTab from './FilesTab';
-import PersonalInfoTab from './PersonalInfoTab'; // Yeni tabı ekliyoruz
+import PersonalInfoTab from './PersonalInfoTab'; 
 import PhotoUploadModal from './PhotoUploadModal';
 import { useParams } from 'react-router-dom';
 import AttendanceTab from './AttendanceTab';
+import LeaveRequestsTab from './LeaveRequestsTab';
+import AdvanceRequestsTab from './AdvanceRequestsTab';
 
-const PersonnelDetail = () => {
-  const { id: personnelId } = useParams();
+
+const PersonnelDetail = ({ userInfo }) => {
+  const { id } = useParams();
+  const personnelId = id || userInfo?.personnel_id; // Eğer id yoksa userInfo'dan alır
   const [personnelData, setPersonnelData] = useState(null);
   const [departments, setDepartments] = useState([]);
   const [titles, setTitles] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const refreshPersonnelData = () => {
+    if (!personnelId) {
+      console.error("Geçerli bir personnelId tanımlanmadı.");
+      return;
+    }
     axios.get(`http://localhost:5001/api/personnel/${personnelId}`)
       .then(response => setPersonnelData(response.data))
       .catch(error => console.error('Error fetching personnel data:', error));
   };
 
   useEffect(() => {
-    refreshPersonnelData();
-    axios.get('http://localhost:5001/api/departments').then(res => setDepartments(res.data));
-    axios.get('http://localhost:5001/api/titles').then(res => setTitles(res.data));
+    if (personnelId) {
+      refreshPersonnelData();
+    }
   }, [personnelId]);
 
   if (!personnelData) return <div>Loading...</div>;
 
   const tabItems = [
-    {
-      key: '1',
-      label: 'Profile',
-      children: <ProfileTab personnelData={personnelData} showUploadModal={() => setIsModalOpen(true)} />,
-    },
-    {
-      key: '2',
-      label: 'Career',
-      children: <CareerTab personnelId={personnelId} departments={departments} titles={titles} refreshPersonnelData={refreshPersonnelData} />,
-    },
-    {
-      key: '3',
-      label: 'Files',
-      children: <FilesTab personnelId={personnelId} />,
-    },
-    {
-      key: '4',
-      label: 'Kişisel Bilgiler',  // Yeni kişisel bilgiler sekmesi
-      children: <PersonalInfoTab personnelId={personnelId} />,  // Yeni bileşeni ekliyoruz
-    },
-    {
-      key: '5',
-      label: 'Attendance',  // Yeni kişisel bilgiler sekmesi
-      children: <AttendanceTab personnelId={personnelId} />,  // Yeni bileşeni ekliyoruz
-    },
+    { key: '1', label: 'Profile', children: <ProfileTab personnelData={personnelData} showUploadModal={() => setIsModalOpen(true)} /> },
+    { key: '2', label: 'Career', children: <CareerTab personnelId={personnelId} departments={departments} titles={titles} refreshPersonnelData={refreshPersonnelData} /> },
+    { key: '3', label: 'Files', children: <FilesTab personnelId={personnelId} /> },
+    { key: '4', label: 'Kişisel Bilgiler', children: <PersonalInfoTab personnelId={personnelId} onDataUpdate={refreshPersonnelData} /> },
+    { key: '5', label: 'Attendance', children: <AttendanceTab personnelId={personnelId} /> },
+    { key: '6', label: 'Leave Requests', children: <LeaveRequestsTab personnelId={personnelId} /> },
+    { key: '7', label: 'Avans Talepleri', children: <AdvanceRequestsTab personnelId={personnelId} />},
   ];
 
   return (
@@ -74,4 +64,3 @@ const PersonnelDetail = () => {
 };
 
 export default PersonnelDetail;
-

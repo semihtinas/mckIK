@@ -3,7 +3,7 @@ import { Button, Modal, Form, Input, Select, message, Row, Col, Card } from 'ant
 import axios from 'axios';
 import '../styles/PersonalInfoTab.css';
 
-const PersonalInfoTab = ({ personnelId }) => {
+const PersonalInfoTab = ({ personnelId, onDataUpdate }) => {
   const [personalDetails, setPersonalDetails] = useState({
     health: {},
     address: {},
@@ -75,11 +75,12 @@ const PersonalInfoTab = ({ personnelId }) => {
   // Kaydetme işlemi
   const handleHealthSave = () => {
     const updatedData = form.getFieldsValue();
-    axios.put(`http://localhost:5001/api/personnel/${personnelId}/health`, updatedData)
+    axios.put(`http://localhost:5001/api/health/${personnelId}`, updatedData)
       .then(() => {
         message.success('Health information updated successfully!');
         setIsHealthModalOpen(false);
-        fetchData();
+        fetchData();  // Veriyi yeniden çekmek için
+        onDataUpdate();
       })
       .catch(error => {
         console.error('Error updating details:', error);
@@ -89,11 +90,12 @@ const PersonalInfoTab = ({ personnelId }) => {
 
   const handleEducationSave = () => {
     const updatedData = form.getFieldsValue();
-    axios.put(`http://localhost:5001/api/personnel/${personnelId}/education`, updatedData)
+    axios.put(`http://localhost:5001/api/education/${personnelId}`, updatedData)
       .then(() => {
         message.success('Education information updated successfully!');
         setIsEducationModalOpen(false);
         fetchData();
+        onDataUpdate();
       })
       .catch(error => {
         console.error('Error updating details:', error);
@@ -103,11 +105,12 @@ const PersonalInfoTab = ({ personnelId }) => {
 
   const handleAddressSave = () => {
     const updatedData = form.getFieldsValue();
-    axios.put(`http://localhost:5001/api/personnel/${personnelId}/address`, updatedData)
+    axios.put(`http://localhost:5001/api/address/${personnelId}`, updatedData)
       .then(() => {
         message.success('Address information updated successfully!');
         setIsAddressModalOpen(false);
         fetchData();
+        onDataUpdate();
       })
       .catch(error => {
         console.error('Error updating details:', error);
@@ -117,11 +120,12 @@ const PersonalInfoTab = ({ personnelId }) => {
 
   const handleContactSave = () => {
     const updatedData = form.getFieldsValue();
-    axios.put(`http://localhost:5001/api/personnel/${personnelId}/contact`, updatedData)
+    axios.put(`http://localhost:5001/api/contact/${personnelId}`, updatedData)
       .then(() => {
         message.success('Contact information updated successfully!');
         setIsContactModalOpen(false);
         fetchData();
+        onDataUpdate();
       })
       .catch(error => {
         console.error('Error updating details:', error);
@@ -134,11 +138,12 @@ const PersonalInfoTab = ({ personnelId }) => {
     if (updatedData.number_of_children === undefined) {
       updatedData.number_of_children = 0;
     }
-    axios.put(`http://localhost:5001/api/personnel/${personnelId}/family`, updatedData)
+    axios.put(`http://localhost:5001/api/family/${personnelId}`, updatedData)
       .then(() => {
         message.success('Family information updated successfully!');
         setIsFamilyModalOpen(false);
         fetchData();
+        onDataUpdate();
       })
       .catch(error => {
         console.error('Error updating details:', error);
@@ -148,18 +153,20 @@ const PersonalInfoTab = ({ personnelId }) => {
 
 
   const handlePersonalInfoSave = () => {
-    const updatedData = form.getFieldsValue();
+    const updatedData = form.getFieldsValue(); // Formdaki güncellenen verileri al
     axios.put(`http://localhost:5001/api/personnel/${personnelId}/personal-info`, updatedData)
       .then(() => {
         message.success('Personal information updated successfully!');
-        setIsPersonalInfoModalOpen(false);
-        fetchData();  // Yeniden veri çekmek için fetchData çağrısı yapılıyor
+        setIsPersonalInfoModalOpen(false); // Modal'ı kapat
+        fetchData();  // Güncellenen veriyi yeniden çek
+        onDataUpdate();
       })
       .catch(error => {
-        console.error('Error updating details:', error);
+        console.error('Error updating personal information:', error);
         message.error('Failed to update personal information');
       });
   };
+  
   
 
 
@@ -337,8 +344,8 @@ const PersonalInfoTab = ({ personnelId }) => {
   <Form form={form}>
     <Form.Item name="gender" label="Gender">
       <Select>
-        <Select.Option value="Male">Male</Select.Option>
-        <Select.Option value="Female">Female</Select.Option>
+        <Select.Option value="MALE">Male</Select.Option>
+        <Select.Option value="FEMALE">Female</Select.Option>
       </Select>
     </Form.Item>
     <Form.Item name="birthdate" label="Birthdate">

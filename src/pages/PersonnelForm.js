@@ -29,46 +29,35 @@ function PersonnelForm({ onAddPersonnel }) {
     fetchDepartmentsAndTitles();
   }, []);
 
-  // Form gönderildiğinde yapılacaklar
   const onFinish = async (values) => {
     setLoading(true);
     try {
       const hireDate = values.hire_date ? values.hire_date.format('YYYY-MM-DD') : null;
 
-      // Backend'e personel ekleme isteği
+      // İlk personel oluşturma isteği
       const response = await axios.post('http://localhost:5001/api/personnel', {
         first_name: values.first_name,
         last_name: values.last_name,
         tc_id_number: values.tc_id_number,
         hire_date: hireDate,
+        department_id: values.department_id,
+        title_id: values.title_id
       });
 
-      const newPersonnel = response.data;
-
-      // Departman ekleme (opsiyonel)
-      if (values.department_id) {
-        await axios.post(`http://localhost:5001/api/personnel/${newPersonnel.id}/department`, {
-          department_id: values.department_id,
-        });
-      }
-
-      // Title ekleme (opsiyonel)
-      if (values.title_id) {
-        await axios.post(`http://localhost:5001/api/personnel/${newPersonnel.id}/title`, {
-          title_id: values.title_id,
-        });
-      }
+      // Personel başarıyla eklendikten sonra, detaylı bilgileri al
+      const detailedResponse = await axios.get(`http://localhost:5001/api/personnel/${response.data.id}`);
 
       message.success('Personnel added successfully!');
-      onAddPersonnel(newPersonnel); // Yeni personeli üst bileşene gönder
-      form.resetFields(); // Formu sıfırla
+      
+      // Parent komponente güncel veriyi gönder
+      if (onAddPersonnel) {
+        onAddPersonnel(detailedResponse.data);
+      }
+
+      form.resetFields();
     } catch (error) {
       console.error('Error during personnel addition:', error);
-      if (error.response && error.response.status === 400) {
-        message.error(error.response.data.error);
-      } else {
-        message.error('Failed to add personnel');
-      }
+      message.error(error.response?.data?.error || 'Failed to add personnel');
     } finally {
       setLoading(false);
     }

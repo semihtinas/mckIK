@@ -1,0 +1,39 @@
+.weekly-calendar {
+    padding: 16px;
+}
+
+.calendar-grid {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.calendar-row {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 8px 0;
+}
+
+.shift-cell {
+    min-height: 100px;
+    border: 1px dashed #d9d9d9;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+.shift-cell:hover {
+    background-color: rgba(0,0,0,0.02);
+}
+
+.shift-card {
+    cursor: move;
+    transition: all 0.3s;
+}
+
+.shift-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.ant-card-actions {
+    background: transparent !important;
+}
