@@ -1,0 +1,579 @@
+"table_name","column_name","data_type"
+advance_files,id,integer
+advance_files,advance_request_id,integer
+advance_files,filename,text
+advance_files,originalname,text
+advance_files,uploaded_at,timestamp without time zone
+advance_files,document_type,character varying
+advance_files,uploaded_by,integer
+advance_history,id,integer
+advance_history,advance_request_id,integer
+advance_history,old_status,character varying
+advance_history,new_status,character varying
+advance_history,changed_by,integer
+advance_history,description,text
+advance_history,changed_at,timestamp without time zone
+advance_requests,id,integer
+advance_requests,personnel_id,integer
+advance_requests,amount,numeric
+advance_requests,request_date,timestamp without time zone
+advance_requests,status,character varying
+advance_requests,approved_by,integer
+advance_requests,approved_date,timestamp without time zone
+advance_requests,reason,text
+advance_requests,approval_reason,text
+advance_requests,created_at,timestamp without time zone
+advance_requests,updated_at,timestamp without time zone
+advance_requests,completed_by,integer
+advance_requests,completed_date,timestamp without time zone
+advance_requests,completion_note,text
+advance_requests,completion_document,text
+advance_requests,is_completed,boolean
+advance_requests,payment_method,character varying
+advance_requests,payment_date,timestamp without time zone
+advance_requests,paid_by,integer
+advance_requests,payment_description,text
+calendar_events,id,integer
+calendar_events,title,character varying
+calendar_events,description,text
+calendar_events,event_type,character varying
+calendar_events,start_date,timestamp without time zone
+calendar_events,end_date,timestamp without time zone
+calendar_events,created_by,integer
+calendar_events,created_at,timestamp without time zone
+calendar_events,updated_at,timestamp without time zone
+calendar_events,status,character varying
+calendar_events,is_deleted,boolean
+calendar_events,participants,ARRAY
+calendar_leaves,id,integer
+calendar_leaves,start_date,date
+calendar_leaves,end_date,date
+calendar_leaves,leave_type_id,integer
+calendar_leaves,leave_type,character varying
+calendar_leaves,personnel_name,text
+calendar_leaves,status,character varying
+company_settings,id,integer
+company_settings,setting_key,character varying
+company_settings,setting_value,text
+company_settings,created_at,timestamp without time zone
+company_settings,updated_at,timestamp without time zone
+content_types,id,integer
+content_types,name,character varying
+department_shift_settings,id,integer
+department_shift_settings,department_id,integer
+department_shift_settings,shift_type_id,integer
+department_shift_settings,has_fixed_schedule,boolean
+department_shift_settings,fixed_start_time,time without time zone
+department_shift_settings,fixed_end_time,time without time zone
+department_shift_settings,work_days,ARRAY
+department_shift_settings,is_active,boolean
+department_shift_settings,created_at,timestamp without time zone
+department_shift_settings,updated_at,timestamp without time zone
+departments,id,integer
+departments,name,character varying
+employment_history,id,integer
+employment_history,personnel_id,integer
+employment_history,hire_date,date
+employment_history,termination_date,date
+employment_history,created_at,timestamp without time zone
+employment_history,department_id,integer
+employment_history,title_id,integer
+event_participants,id,integer
+event_participants,event_id,integer
+event_participants,personnel_id,integer
+event_participants,status,character varying
+event_participants,notification_sent,boolean
+event_participants,created_at,timestamp without time zone
+event_reminders,id,integer
+event_reminders,event_id,integer
+event_reminders,reminder_type,character varying
+event_reminders,reminder_time,timestamp without time zone
+event_reminders,status,character varying
+event_reminders,created_at,timestamp without time zone
+expense_categories,id,integer
+expense_categories,name,character varying
+expense_categories,description,text
+expense_categories,code,character varying
+expense_categories,parent_id,integer
+expense_categories,budget_limit,numeric
+expense_categories,created_at,timestamp with time zone
+expense_categories,updated_at,timestamp with time zone
+expense_categories,is_active,boolean
+expense_content_types,id,integer
+expense_content_types,name,character varying
+expense_content_types,description,text
+expense_content_types,file_extensions,ARRAY
+expense_content_types,max_file_size,integer
+expense_content_types,created_at,timestamp with time zone
+expense_content_types,updated_at,timestamp with time zone
+expense_content_types,is_active,boolean
+expense_files,id,integer
+expense_files,expense_id,integer
+expense_files,filename,text
+expense_files,originalname,text
+expense_files,uploaded_at,timestamp without time zone
+expense_files,file_type,character varying
+expense_files,uploaded_by,integer
+expense_files,document_type,character varying
+expense_files,content_type_id,integer
+expense_history,id,integer
+expense_history,expense_id,integer
+expense_history,old_status,character varying
+expense_history,new_status,character varying
+expense_history,changed_by,integer
+expense_history,description,text
+expense_history,changed_at,timestamp without time zone
+expense_template_items,id,integer
+expense_template_items,template_id,integer
+expense_template_items,description,text
+expense_template_items,amount,numeric
+expense_template_items,sort_order,integer
+expense_templates,id,integer
+expense_templates,name,character varying
+expense_templates,description,text
+expense_templates,category_id,integer
+expense_templates,total_amount,numeric
+expense_templates,created_at,timestamp with time zone
+expense_templates,updated_at,timestamp with time zone
+expense_templates,is_active,boolean
+expense_templates,created_by,integer
+expenses,id,integer
+expenses,personnel_id,integer
+expenses,title,character varying
+expenses,amount,numeric
+expenses,expense_type,character varying
+expenses,status,character varying
+expenses,request_date,timestamp without time zone
+expenses,approved_by,integer
+expenses,approved_date,timestamp without time zone
+expenses,payment_method,character varying
+expenses,payment_date,timestamp without time zone
+expenses,paid_by,integer
+expenses,description,text
+expenses,created_at,timestamp without time zone
+expenses,updated_at,timestamp without time zone
+expenses,payment_description,text
+expenses,category_id,integer
+expenses,template_id,integer
+expenses,is_recurring,boolean
+expenses,recurrence_period,character varying
+expenses,is_fixed,boolean
+hire_termination_history,id,integer
+hire_termination_history,personnel_id,integer
+hire_termination_history,hire_date,date
+hire_termination_history,termination_date,date
+hire_termination_history,reason,character varying
+hire_termination_history,created_at,timestamp without time zone
+invalid_attendance,id,integer
+invalid_attendance,personnel_id,integer
+invalid_attendance,card_number,character varying
+invalid_attendance,entry_date,date
+invalid_attendance,entry_time,time without time zone
+invalid_attendance,exit_date,date
+invalid_attendance,exit_time,time without time zone
+invalid_attendance,error_message,text
+invalid_attendance,created_at,timestamp without time zone
+invalid_attendance,updated_at,timestamp without time zone
+leave_balance_logs,id,integer
+leave_balance_logs,personnel_id,integer
+leave_balance_logs,leave_type_id,integer
+leave_balance_logs,action_type,character varying
+leave_balance_logs,days_changed,numeric
+leave_balance_logs,reason,text
+leave_balance_logs,created_by,integer
+leave_balance_logs,created_at,timestamp with time zone
+leave_balances,id,integer
+leave_balances,personnel_id,integer
+leave_balances,leave_type_id,integer
+leave_balances,year,integer
+leave_balances,total_days,integer
+leave_balances,used_days,integer
+leave_balances,carried_forward_days,integer
+leave_balances,last_calculated_at,timestamp with time zone
+leave_balances,created_at,timestamp with time zone
+leave_balances,updated_at,timestamp with time zone
+leave_balances,next_renewal_date,date
+leave_policies,id,integer
+leave_policies,leave_type_id,integer
+leave_policies,years_of_service,integer
+leave_policies,days_entitled,integer
+leave_policies,is_carried_forward,boolean
+leave_policies,max_carryover_days,integer
+leave_policies,effective_from,date
+leave_policies,effective_to,date
+leave_policies,created_at,timestamp with time zone
+leave_policy_backup,id,integer
+leave_policy_backup,leave_type_id,integer
+leave_policy_backup,years_of_service,integer
+leave_policy_backup,days_entitled,integer
+leave_requests,id,integer
+leave_requests,personnel_id,integer
+leave_requests,leave_type_id,integer
+leave_requests,start_date,date
+leave_requests,end_date,date
+leave_requests,work_days,numeric
+leave_requests,total_days,integer
+leave_requests,status,character varying
+leave_requests,reason,text
+leave_requests,created_at,timestamp without time zone
+leave_requests,updated_at,timestamp without time zone
+leave_type_backup,id,integer
+leave_type_backup,name,character varying
+leave_type_backup,is_paid,boolean
+leave_type_backup,requires_approval,boolean
+leave_type_backup,is_recurring,boolean
+leave_type_backup,is_event_based,boolean
+leave_types,id,integer
+leave_types,name,character varying
+leave_types,code,character varying
+leave_types,is_paid,boolean
+leave_types,is_recurring,boolean
+leave_types,is_event_based,boolean
+leave_types,requires_approval,boolean
+leave_types,max_days,integer
+leave_types,description,text
+leave_types,created_at,timestamp with time zone
+leave_types,updated_at,timestamp with time zone
+leave_types,required_gender,character varying
+meeting_agendas,id,integer
+meeting_agendas,meeting_id,integer
+meeting_agendas,agenda_item,character varying
+meeting_agendas,description,text
+meeting_agendas,duration_minutes,integer
+meeting_agendas,presenter_id,integer
+meeting_agendas,order_number,integer
+meeting_agendas,created_at,timestamp without time zone
+meeting_agendas,updated_at,timestamp without time zone
+meeting_agendas,is_postponed,boolean
+meeting_agendas,postponed_reason,text
+meeting_agendas,postponed_date,timestamp without time zone
+meeting_documents,id,integer
+meeting_documents,meeting_id,integer
+meeting_documents,agenda_item_id,integer
+meeting_documents,file_name,character varying
+meeting_documents,file_path,character varying
+meeting_documents,document_type,character varying
+meeting_documents,file_size,integer
+meeting_documents,version,integer
+meeting_documents,description,text
+meeting_documents,uploaded_by,integer
+meeting_documents,created_at,timestamp without time zone
+meeting_documents,updated_at,timestamp without time zone
+meeting_minute_files,id,integer
+meeting_minute_files,minute_id,integer
+meeting_minute_files,file_name,character varying
+meeting_minute_files,file_path,character varying
+meeting_minute_files,file_size,integer
+meeting_minute_files,file_type,character varying
+meeting_minute_files,uploaded_by,integer
+meeting_minute_files,created_at,timestamp without time zone
+meeting_minute_items,id,integer
+meeting_minute_items,minute_id,integer
+meeting_minute_items,description,text
+meeting_minute_items,assigned_to,integer
+meeting_minute_items,due_date,date
+meeting_minute_items,status,character varying
+meeting_minute_items,priority,character varying
+meeting_minute_items,created_at,timestamp without time zone
+meeting_minute_items,completed_at,timestamp without time zone
+meeting_minute_items,updated_at,timestamp without time zone
+meeting_minutes,id,integer
+meeting_minutes,meeting_id,integer
+meeting_minutes,agenda_item_id,integer
+meeting_minutes,content,text
+meeting_minutes,decisions,text
+meeting_minutes,action_items,text
+meeting_minutes,responsible_personnel_id,integer
+meeting_minutes,created_by,integer
+meeting_minutes,created_at,timestamp without time zone
+meeting_minutes,updated_at,timestamp without time zone
+meeting_minutes,approved_by,integer
+meeting_minutes,approved_at,timestamp without time zone
+meeting_minutes,status,character varying
+meeting_participants,id,integer
+meeting_participants,meeting_id,integer
+meeting_participants,personnel_id,integer
+meeting_participants,role,character varying
+meeting_participants,attendance_status,character varying
+meeting_participants,created_at,timestamp without time zone
+meeting_participants,updated_at,timestamp without time zone
+meetings,id,integer
+meetings,title,character varying
+meetings,meeting_type,character varying
+meetings,start_time,timestamp without time zone
+meetings,end_time,timestamp without time zone
+meetings,location,character varying
+meetings,status,character varying
+meetings,organizer_id,integer
+meetings,department_id,integer
+meetings,created_at,timestamp without time zone
+meetings,updated_at,timestamp without time zone
+new_comparison_operators,id,integer
+new_comparison_operators,code,character varying
+new_comparison_operators,name,character varying
+new_comparison_operators,symbol,character varying
+new_comparison_operators,description,text
+new_comparison_operators,is_active,boolean
+new_comparison_operators,created_at,timestamp without time zone
+new_comparison_operators,updated_at,timestamp without time zone
+new_leave_calculation_methods,id,integer
+new_leave_calculation_methods,code,character varying
+new_leave_calculation_methods,name,character varying
+new_leave_calculation_methods,description,text
+new_leave_calculation_methods,is_active,boolean
+new_leave_calculation_methods,created_at,timestamp without time zone
+new_leave_calculation_methods,updated_at,timestamp without time zone
+new_leave_condition_types,id,integer
+new_leave_condition_types,code,character varying
+new_leave_condition_types,name,character varying
+new_leave_condition_types,table_name,character varying
+new_leave_condition_types,column_name,character varying
+new_leave_condition_types,data_type,character varying
+new_leave_condition_types,possible_values,jsonb
+new_leave_condition_types,description,text
+new_leave_condition_types,is_active,boolean
+new_leave_condition_types,created_at,timestamp without time zone
+new_leave_condition_types,updated_at,timestamp without time zone
+new_leave_renewal_periods,id,integer
+new_leave_renewal_periods,code,character varying
+new_leave_renewal_periods,name,character varying
+new_leave_renewal_periods,renewal_type,character varying
+new_leave_renewal_periods,renewal_day,integer
+new_leave_renewal_periods,renewal_month,integer
+new_leave_renewal_periods,description,text
+new_leave_renewal_periods,is_active,boolean
+new_leave_renewal_periods,created_at,timestamp without time zone
+new_leave_renewal_periods,updated_at,timestamp without time zone
+new_leave_type_conditions,id,integer
+new_leave_type_conditions,leave_type_id,integer
+new_leave_type_conditions,condition_type_id,integer
+new_leave_type_conditions,comparison_operator_id,integer
+new_leave_type_conditions,required_value,text
+new_leave_type_conditions,error_message,text
+new_leave_type_conditions,is_active,boolean
+new_leave_type_conditions,created_at,timestamp without time zone
+new_leave_type_conditions,updated_at,timestamp without time zone
+new_leave_types,id,integer
+new_leave_types,code,character varying
+new_leave_types,name,character varying
+new_leave_types,calculation_method_id,integer
+new_leave_types,renewal_period_id,integer
+new_leave_types,is_paid,boolean
+new_leave_types,is_event_based,boolean
+new_leave_types,requires_approval,boolean
+new_leave_types,max_days,integer
+new_leave_types,allow_negative_balance,boolean
+new_leave_types,description,text
+new_leave_types,is_active,boolean
+new_leave_types,created_at,timestamp without time zone
+new_leave_types,updated_at,timestamp without time zone
+permissions,id,integer
+permissions,name,character varying
+permissions,description,character varying
+permissions,page,character varying
+permissions,action,character varying
+personnel,id,integer
+personnel,first_name,character varying
+personnel,last_name,character varying
+personnel,created_at,timestamp without time zone
+personnel,gender,character varying
+personnel,tc_id_number,character varying
+personnel,birthdate,date
+personnel,is_active,boolean
+personnel_address,id,integer
+personnel_address,personnel_id,integer
+personnel_address,home_address,text
+personnel_address,city,character varying
+personnel_address,district,character varying
+personnel_address,postal_code,character varying
+personnel_address,created_at,timestamp without time zone
+personnel_attendance,id,integer
+personnel_attendance,personnel_id,integer
+personnel_attendance,entry_date,date
+personnel_attendance,entry_time,time without time zone
+personnel_attendance,exit_date,date
+personnel_attendance,exit_time,time without time zone
+personnel_attendance,created_at,timestamp without time zone
+personnel_attendance,updated_at,timestamp without time zone
+personnel_attendance,card_number,character varying
+personnel_card_mapping,id,integer
+personnel_card_mapping,personnel_id,integer
+personnel_card_mapping,card_id,character varying
+personnel_contact,id,integer
+personnel_contact,personnel_id,integer
+personnel_contact,phone_number,character varying
+personnel_contact,email,character varying
+personnel_contact,emergency_contact_name,character varying
+personnel_contact,emergency_contact_phone,character varying
+personnel_contact,created_at,timestamp without time zone
+personnel_departments,personnel_id,integer
+personnel_departments,department_id,integer
+personnel_education,id,integer
+personnel_education,personnel_id,integer
+personnel_education,education_level,character varying
+personnel_education,graduation_year,integer
+personnel_education,created_at,timestamp without time zone
+personnel_family,id,integer
+personnel_family,personnel_id,integer
+personnel_family,marital_status,character varying
+personnel_family,number_of_children,integer
+personnel_family,created_at,timestamp without time zone
+personnel_files,id,integer
+personnel_files,personnel_id,integer
+personnel_files,filename,text
+personnel_files,originalname,text
+personnel_files,uploaded_at,timestamp without time zone
+personnel_files,content_type_id,integer
+personnel_health,id,integer
+personnel_health,personnel_id,integer
+personnel_health,blood_type,character varying
+personnel_health,disability_status,character varying
+personnel_health,created_at,timestamp without time zone
+personnel_health,smoking_status,boolean
+personnel_health,test_column,character varying
+personnel_health,notes,text
+personnel_off_days,id,integer
+personnel_off_days,personnel_id,integer
+personnel_off_days,assignment_date,date
+personnel_off_days,created_at,timestamp without time zone
+personnel_off_days,updated_at,timestamp without time zone
+personnel_photos,id,integer
+personnel_photos,personnel_id,integer
+personnel_photos,photo_url,character varying
+personnel_shift_assignments,id,integer
+personnel_shift_assignments,personnel_id,integer
+personnel_shift_assignments,shift_schedule_id,integer
+personnel_shift_assignments,assignment_date,date
+personnel_shift_assignments,status,character varying
+personnel_shift_assignments,notes,text
+personnel_shift_assignments,created_at,timestamp without time zone
+personnel_shift_assignments,updated_at,timestamp without time zone
+personnel_shift_assignments,is_active,boolean
+personnel_shift_group_members,id,integer
+personnel_shift_group_members,group_id,integer
+personnel_shift_group_members,personnel_id,integer
+personnel_shift_group_members,created_at,timestamp without time zone
+personnel_shift_groups,id,integer
+personnel_shift_groups,name,character varying
+personnel_shift_groups,department_id,integer
+personnel_shift_groups,template_id,integer
+personnel_shift_groups,rotation_start_date,date
+personnel_shift_groups,is_active,boolean
+personnel_shift_groups,created_at,timestamp without time zone
+personnel_shift_groups,updated_at,timestamp without time zone
+personnel_shift_groups,created_by,integer
+personnel_titles,personnel_id,integer
+personnel_titles,title_id,integer
+public_holidays,id,integer
+public_holidays,holiday_name,character varying
+public_holidays,holiday_date,date
+role_permissions,role_id,integer
+role_permissions,permission_id,integer
+roles,id,integer
+roles,name,character varying
+roles,description,character varying
+shift_assignments,id,integer
+shift_assignments,personnel_id,integer
+shift_assignments,shift_schedule_id,integer
+shift_assignments,assignment_date,date
+shift_assignments,previous_shift_id,integer
+shift_assignments,changed_by,integer
+shift_assignments,change_reason,text
+shift_assignments,created_at,timestamp without time zone
+shift_assignments,status,character varying
+shift_assignments,created_by,integer
+shift_assignments,updated_at,timestamp without time zone
+shift_assignments,notes,text
+shift_schedules,id,integer
+shift_schedules,shift_type_id,integer
+shift_schedules,name,character varying
+shift_schedules,start_time,time without time zone
+shift_schedules,end_time,time without time zone
+shift_schedules,color,character varying
+shift_schedules,is_active,boolean
+shift_schedules,created_at,timestamp without time zone
+shift_schedules,updated_at,timestamp without time zone
+shift_template_details,id,integer
+shift_template_details,template_id,integer
+shift_template_details,day_index,integer
+shift_template_details,shift_schedule_id,integer
+shift_template_details,created_at,timestamp without time zone
+shift_templates,id,integer
+shift_templates,name,character varying
+shift_templates,department_id,integer
+shift_templates,is_rotation,boolean
+shift_templates,rotation_days,integer
+shift_templates,is_active,boolean
+shift_templates,created_at,timestamp without time zone
+shift_templates,updated_at,timestamp without time zone
+shift_templates,created_by,integer
+shift_types,id,integer
+shift_types,name,character varying
+shift_types,description,text
+shift_types,is_active,boolean
+shift_types,created_at,timestamp without time zone
+shift_types,updated_at,timestamp without time zone
+sub_expenses,id,integer
+sub_expenses,expense_id,integer
+sub_expenses,description,text
+sub_expenses,amount,numeric
+sub_expenses,created_at,timestamp with time zone
+subtasks,id,integer
+subtasks,parent_task_id,integer
+subtasks,description,text
+subtasks,assigned_to,integer
+subtasks,due_date,date
+subtasks,status,character varying
+subtasks,priority,character varying
+subtasks,created_at,timestamp without time zone
+subtasks,created_by,integer
+subtasks,completed_at,timestamp without time zone
+system_columns,id,integer
+system_columns,table_id,integer
+system_columns,column_name,character varying
+system_columns,display_name,character varying
+system_columns,data_type,character varying
+system_columns,description,text
+system_columns,is_active,boolean
+system_tables,id,integer
+system_tables,table_name,character varying
+system_tables,display_name,character varying
+system_tables,description,text
+system_tables,is_active,boolean
+task_attachments,id,integer
+task_attachments,task_id,integer
+task_attachments,file_name,character varying
+task_attachments,file_path,character varying
+task_attachments,file_type,character varying
+task_attachments,file_size,integer
+task_attachments,uploaded_by,integer
+task_attachments,uploaded_at,timestamp without time zone
+task_attachments,description,text
+task_checklist_items,id,integer
+task_checklist_items,task_id,integer
+task_checklist_items,subtask_id,integer
+task_checklist_items,description,text
+task_checklist_items,is_completed,boolean
+task_checklist_items,created_at,timestamp with time zone
+task_checklist_items,completed_at,timestamp with time zone
+task_comments,id,integer
+task_comments,task_id,integer
+task_comments,comment,text
+task_comments,created_by,integer
+task_comments,created_at,timestamp without time zone
+task_comments,progress_percentage,integer
+task_history,id,integer
+task_history,task_id,integer
+task_history,old_status,character varying
+task_history,new_status,character varying
+task_history,changed_by,integer
+task_history,changed_at,timestamp without time zone
+task_history,description,text
+titles,id,integer
+titles,name,character varying
+users,id,integer
+users,username,character varying
+users,password,character varying
+users,personnel_id,integer
+users,created_at,timestamp without time zone
+users,role_id,integer
