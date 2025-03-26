@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmuse_dashboard=self.webpackChunkmuse_dashboard||[]).push([[925],{9925:(s,r,a)=>{a.r(r),a.d(r,{default:()=>d});a(9950);var e=a(4414);const d=()=>(0,e.jsxs)("div",{children:[(0,e.jsx)("h1",{children:"Reports"}),(0,e.jsx)("p",{children:"Bu, raporlar sayfas\u0131d\u0131r."})]})}}]);

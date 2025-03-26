@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmuse_dashboard=self.webpackChunkmuse_dashboard||[]).push([[253],{6253:(e,s,i)=>{i.r(s),i.d(s,{default:()=>d});i(9950);var a=i(4414);const d=()=>(0,a.jsxs)("div",{style:{textAlign:"center",padding:"20px"},children:[(0,a.jsx)("h1",{children:"Yetkisiz Eri\u015fim"}),(0,a.jsx)("p",{children:"Bu sayfaya eri\u015fim izniniz yok."})]})}}]);
